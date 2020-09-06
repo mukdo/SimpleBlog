@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Blog.Framework.Categories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -35,6 +36,7 @@ namespace Blog.Framework
             base.OnModelCreating(builder);
         }
 
+        public DbSet<Category> Categories { get; set; }
        
     }
 }
