@@ -43,7 +43,7 @@ namespace Blog.Web
             var connectionString = Configuration.GetConnectionString(connectionStringName);
             var migrationAssemblyName = typeof(Startup).Assembly.FullName;
 
-            //builder.RegisterModule(new ContextModule(connectionString, migrationAssemblyName));
+            builder.RegisterModule(new ContextModule(connectionString, migrationAssemblyName));
             builder.RegisterModule(new FrameworkModule(connectionString, migrationAssemblyName));
             builder.RegisterModule(new WebModule(connectionString, migrationAssemblyName));
         }

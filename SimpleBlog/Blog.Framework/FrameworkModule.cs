@@ -26,10 +26,21 @@ namespace Blog.Framework
                 .WithParameter("migrationAssemblyName", _migrationAssemblyName)
                 .InstancePerLifetimeScope();
 
+            //builder.RegisterType<ApplicationDbContext>()
+            //    .WithParameter("connectionString", _connectionString)
+            //    .WithParameter("migrationAssemblyName", _migrationAssemblyName)
+            //    .InstancePerLifetimeScope();
+
             builder.RegisterType<AccountSeed>()
                 .InstancePerLifetimeScope();
 
-            
+            builder.RegisterType<UserService>().As<IUserService>()
+              .InstancePerLifetimeScope();
+
+            builder.RegisterType<CurrentUserService>().As<ICurrentUserService>()
+           .InstancePerLifetimeScope();
+
+
             base.Load(builder);
         }
     }

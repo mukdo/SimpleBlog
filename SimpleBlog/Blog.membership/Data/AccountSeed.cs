@@ -22,7 +22,7 @@ namespace Blog.membership.Data
         public AccountSeed(UserManager userManager, RoleManager roleManager, ApplicationDbContext context)
             : base(context)
         {
-            _userManager = userManager;
+            _userManager = userManager; 
             _roleManager = roleManager;
 
             _superAdminUser = new ApplicationUser("superadmin", "Sabbir Islam Mukdo", "8801781831484", "bmukdo@gmail.com");
