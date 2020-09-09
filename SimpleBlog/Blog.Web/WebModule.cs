@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Blog.membership.Entities;
+using Blog.Web.Areas.Admin.Models.Categories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Blog.Web
 
         protected override void Load(ContainerBuilder builder)
         {
-           // builder.RegisterType<CampaignModel>();
+            builder.RegisterType<CategoryModel>();
            
             base.Load(builder);
         }

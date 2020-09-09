@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin| Dashboard</title>
+    <title>AdminLTE 3 | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -170,25 +170,17 @@
                 </div>
 
                 <!-- Sidebar Menu -->
-                <!-- add addtherate before Model.MenuModel     -->
-                <partial name="_LeftMenu"  />
-
+                <partial name="_LeftMenu" model="@Model.MenuModel" />
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
         </aside>
 
-        <!-- Scroll to go top of the page  -->
-        <a id="back-to-top" href="#" class="btn btn-warning  back-to-top" role="button" aria-label="Scroll to top">
-            <i class="fas fa-chevron-up"></i>
-        </a>
-        <!-- Scroll to top End -->
-
         <!-- Content Wrapper. Contains page content -->
         @RenderBody()
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2020 <a href="http://adminlte.io">EMSBD</a>.</strong>
+            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 3.0.2

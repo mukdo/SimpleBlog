@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Areas.Admin.Controllers
@@ -11,7 +12,8 @@ namespace Blog.Web.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new DashBoardModel();
+            return View(model);
         }
     }
 }
