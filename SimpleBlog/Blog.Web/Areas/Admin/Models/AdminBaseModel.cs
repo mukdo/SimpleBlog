@@ -14,21 +14,21 @@ namespace Blog.Web.Areas.Admin.Models
         {
             get
             {
-               // if (_httpContextAccessor.HttpContext.Session.IsAvailable
-                  //  && _httpContextAccessor.HttpContext.Session.Keys.Contains(nameof(Response)))
+                if (_httpContextAccessor.HttpContext.Session.IsAvailable
+                    && _httpContextAccessor.HttpContext.Session.Keys.Contains(nameof(Response)))
                 {
-                   // var response = _httpContextAccessor.HttpContext.Session.Get<ResponseModel>(nameof(Response));
-                    //_httpContextAccessor.HttpContext.Session.Remove(nameof(Response));
-                    
-                    //return response;
+                    var response = _httpContextAccessor.HttpContext.Session.Get<ResponseModel>(nameof(Response));
+                    _httpContextAccessor.HttpContext.Session.Remove(nameof(Response));
+
+                    return response;
                 }
-               // else
+                else
                     return null;
             }
             set
             {
-              //  _httpContextAccessor.HttpContext.Session.Set(nameof(Response),
-                //    value);
+                _httpContextAccessor.HttpContext.Session.Set(nameof(Response),
+                    value);
             }
         }
 
@@ -41,27 +41,30 @@ namespace Blog.Web.Areas.Admin.Models
 
         public AdminBaseModel()
         {
-           
-        }
-        private void SetupMenu()
-        {
-            //MenuModel = new MenuModel
-            //{
-            //    MenuItems = new List<MenuItem>
-            //    {
-            //        {
-            //            new MenuItem
-            //            {
-            //                Title = "Customer View",
-            //                Childs = new List<MenuChildItem>
-            //                {
-            //                    new MenuChildItem{ Title = "View Customer", Url = "/Admin/Customer/Index" }
-            //                }
-            //            }
-            //        }
-            //    }
-            //};
+            _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
+            SetupMenu();
         }
 
+        private void SetupMenu()
+        {
+            MenuModel = new MenuModel
+            {
+                MenuItems = new List<MenuItem>
+                {
+                    {
+                        new MenuItem
+                        {
+                            Title = "Category",
+                            Childs = new List<MenuChildItem>
+                            {
+                                new MenuChildItem{ Title = "View Category", Url = "/Admin/Category" },
+                                new MenuChildItem{ Title = "Add Category", Url ="/Admin/Category/CreateCategory"}
+                            }
+                        }
+                    }
+                }
+            };
+        }
     }
 }
+

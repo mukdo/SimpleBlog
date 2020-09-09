@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Web.Areas.Admin.Models
 {
-    public class DashBoardModel
+    public class DashBoardModel : AdminBaseModel  
     {
     }
 }

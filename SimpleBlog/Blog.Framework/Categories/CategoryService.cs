@@ -13,6 +13,10 @@ namespace Blog.Framework.Categories
         }
         public void CreateCategory(Category category)
         {
+            var count = _blogUnitOfWork.CategoryRepository.GetCount(x => x.Name == category.Name);
+            if (count > 0)
+                throw new DuplicationException("Category Name already exists", nameof(category.Name));
+
             _blogUnitOfWork.CategoryRepository.Add(category);
             _blogUnitOfWork.Save();
         }
@@ -32,6 +36,12 @@ namespace Blog.Framework.Categories
 
         public void EditCategory(Category category)
         {
+            var count = _blogUnitOfWork.CategoryRepository.GetCount(x => x.Name == category.Name
+                   && x.Id != category.Id);
+
+            if (count > 0)
+                throw new DuplicationException("Category already exists", nameof(category.Name));
+
             var exitingCategory = _blogUnitOfWork.CategoryRepository.GetById(category.Id);
                 exitingCategory.Name = category.Name;
 
