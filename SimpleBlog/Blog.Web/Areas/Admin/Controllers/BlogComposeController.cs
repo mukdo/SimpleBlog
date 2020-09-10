@@ -37,7 +37,6 @@ namespace Blog.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CreatePost([Bind (nameof(CreateBlogComposeModel.Title),
                                                nameof(CreateBlogComposeModel.Body),
-                                               nameof(CreateBlogComposeModel.DateTime),
                                                nameof(CreateBlogComposeModel.ImageUrl),
                                                nameof(CreateBlogComposeModel.CategoryId))] 
                                          CreateBlogComposeModel model)
@@ -75,7 +74,7 @@ namespace Blog.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditCategory([Bind (nameof(EditBlogComposeModel.Title),
+        public IActionResult EditPost([Bind (nameof(EditBlogComposeModel.Title),
                                                nameof(EditBlogComposeModel.Body),
                                                nameof(EditBlogComposeModel.DateTime),
                                                nameof(EditBlogComposeModel.ImageUrl),
@@ -105,6 +104,31 @@ namespace Blog.Web.Areas.Admin.Controllers
             }
             return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                var model = new BlogComposeModel();
+                try
+                {
+                    var provider = model.Delete(id);
+                    model.Response = new ResponseModel($"Post {provider} successfully deleted.", ResponseType.Success);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    model.Response = new ResponseModel("Post Delete failed.", ResponseType.Failure);
+                    // error logger code
+                    _logger.LogError($"Blog Post Delete 'Failed'. Excption is : {ex.Message}");
+                }
+            }
+            return RedirectToAction("index");
+
+        }
+
         public IActionResult GetPost()
         {
             var tableModel = new DataTablesAjaxRequestModel(Request);

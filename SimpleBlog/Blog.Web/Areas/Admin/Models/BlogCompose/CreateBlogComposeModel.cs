@@ -17,7 +17,7 @@ namespace Blog.Web.Areas.Admin.Models.BlogCompose
         public string Body { get; set; }
 
         public string ImageUrl { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime DateTime { get; set; } = DateTime.Now;
         public int CategoryId { get; set; }
 
         public CreateBlogComposeModel(IBlogComposeService blogComposeService) : base(blogComposeService)
@@ -37,7 +37,7 @@ namespace Blog.Web.Areas.Admin.Models.BlogCompose
                 Title = this.Title,
                 Body = this.Body,
                 ImageUrl = this.ImageUrl,
-                Date = DateTime.Now,
+                Date =this.DateTime,
                 CategoryId = this.CategoryId
             };
 
