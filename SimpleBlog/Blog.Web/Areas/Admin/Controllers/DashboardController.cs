@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin")] 
     public class DashboardController : Controller
     {
         public IActionResult Index()
         {
             var model = new DashBoardModel();
             return View(model);
-        }
+
+        } 
     }
 }
