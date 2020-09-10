@@ -108,7 +108,7 @@ namespace Blog.Web.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    model.Response = new ResponseModel("Smtp configuration creation failued.", ResponseType.Failure);
+                    model.Response = new ResponseModel("Category Edit Failued.", ResponseType.Failure);
                     // error logger code
                     _logger.LogError( $"Category Edit 'Failed'. Excption is : {ex.Message}");
                 }
@@ -140,6 +140,7 @@ namespace Blog.Web.Areas.Admin.Controllers
 
         }
 
+       
         public IActionResult GetCategory()
         {
             var tableModel = new DataTablesAjaxRequestModel(Request);

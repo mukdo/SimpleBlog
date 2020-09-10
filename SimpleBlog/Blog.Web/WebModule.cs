@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Blog.membership.Entities;
+using Blog.Web.Areas.Admin.Models.BlogCompose;
 using Blog.Web.Areas.Admin.Models.Categories;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace Blog.Web
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<CategoryModel>();
+            builder.RegisterType<BlogComposeModel>();
            
             base.Load(builder);
         }
