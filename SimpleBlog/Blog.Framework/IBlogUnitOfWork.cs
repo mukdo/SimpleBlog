@@ -1,4 +1,5 @@
 ﻿using Blog.Data;
+using Blog.Framework.BlogCompose;
 using Blog.Framework.Categories;
 using System;
 using System.Collections.Generic;
@@ -9,5 +10,6 @@ namespace Blog.Framework
     public interface IBlogUnitOfWork:IUnitOfWork
     {
         ICategoryRepository CategoryRepository { get; set; }
+        IBlogComposeRepository BlogRepository { get; set; }
     }
 }

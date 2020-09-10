@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Blog.Data;
+using Blog.Framework.BlogCompose;
 using Blog.Framework.Categories;
 using Blog.membership.Contexts;
 using Blog.membership.Data;
@@ -39,6 +40,12 @@ namespace Blog.Framework
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<CategoryService>().As<ICategoryService>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<BlogComposeRepository>().As<IBlogComposeRepository>()
+               .InstancePerLifetimeScope();
+
+            builder.RegisterType<BlogComposeService>().As<IBlogComposeService>()
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<AccountSeed>()
