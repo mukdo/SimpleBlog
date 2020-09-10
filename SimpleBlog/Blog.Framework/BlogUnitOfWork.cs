@@ -1,5 +1,4 @@
 ﻿using Blog.Data;
-using Blog.Framework.BlogCompose;
 using Blog.Framework.Categories;
 using System;
 using System.Collections.Generic;
@@ -10,14 +9,11 @@ namespace Blog.Framework
     public class BlogUnitOfWork : UnitOfWork, IBlogUnitOfWork
     {
         public ICategoryRepository CategoryRepository { get; set; }
-        public IBlogComposeRepository BlogRepository { get; set; }
 
-        public BlogUnitOfWork( FrameworkContext frameworkContext ,ICategoryRepository categoryRepository, 
-                                                                  IBlogComposeRepository composeRepository)
+        public BlogUnitOfWork( FrameworkContext frameworkContext ,ICategoryRepository categoryRepository)
             :base(frameworkContext)
         {
             CategoryRepository = categoryRepository;
-            BlogRepository = composeRepository;
         }
     }
 }

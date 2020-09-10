@@ -50,32 +50,20 @@ namespace Blog.Web.Areas.Admin.Models
             MenuModel = new MenuModel
             {
                 MenuItems = new List<MenuItem>
-                {    
-                    new MenuItem
+                {
                     {
-                        Title = "Category",
-                        Childs = new List<MenuChildItem>
+                        new MenuItem
                         {
-                            new MenuChildItem{ Title = "View Category", Url = "/Admin/Category" },
-                            new MenuChildItem{ Title = "Add Category", Url ="/Admin/Category/CreateCategory"}
-                                
+                            Title = "Category",
+                            Childs = new List<MenuChildItem>
+                            {
+                                new MenuChildItem{ Title = "View Category", Url = "/Admin/Category" },
+                                new MenuChildItem{ Title = "Add Category", Url ="/Admin/Category/CreateCategory"}
+                            }
                         }
-
-                    },
-                    new MenuItem
-                    {
-                        Title = "Blog Compose",
-                        Childs = new List<MenuChildItem>
-                        {
-                            new MenuChildItem{ Title = "View Post", Url = "/Admin/BlogCompose" },
-                            new MenuChildItem{ Title = "Add Post", Url ="/Admin/BlogCompose/CreatePost"}
-
-                        }
-
                     }
                 }
             };
-
         }
     }
 }
