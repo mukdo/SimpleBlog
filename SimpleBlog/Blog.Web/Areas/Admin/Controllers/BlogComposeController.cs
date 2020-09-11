@@ -74,8 +74,7 @@ namespace Blog.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditPost([Bind (nameof(EditBlogComposeModel.Id),
-                                               nameof(EditBlogComposeModel.Title),
+        public IActionResult EditPost([Bind (nameof(EditBlogComposeModel.Title),
                                                nameof(EditBlogComposeModel.Body),
                                                nameof(EditBlogComposeModel.DateTime),
                                                nameof(EditBlogComposeModel.ImageUrl),
