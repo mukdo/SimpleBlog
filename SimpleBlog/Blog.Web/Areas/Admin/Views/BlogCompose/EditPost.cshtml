@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Edit Post";
 }
+<link href="~/lib/Trumbowyg-master/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -48,7 +49,7 @@
                             <div class="form-group">
                                 <label asp-for="Body" class="col-md-2 control-label"></label>
                                 <div class="col-md-10">
-                                    <input asp-for="Body" class="form-control" />
+                                    <textarea id="js-editor" asp-for="Body" class="form-control"> </textarea>
                                     <span asp-validation-for="Body" class="text-danger"></span>
                                 </div>
                             </div>
@@ -88,6 +89,12 @@
 
 @section PageScripts
 {
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/lib/Trumbowyg-master/Trumbowyg-master/dist/trumbowyg.min.js"></script>
+    <script>
+        $('#js-editor').trumbowyg();
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 }
