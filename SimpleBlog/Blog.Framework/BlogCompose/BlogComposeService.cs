@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.Framework.Categories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,11 @@ namespace Blog.Framework.BlogCompose
 
             _blogUnitOfWork.Save();
 
+        }
+
+        public IList<Category> GetCategory()
+        {
+            return _blogUnitOfWork.CategoryRepository.GetAll();
         }
 
         public BlogComposes GetCompose(int Id)

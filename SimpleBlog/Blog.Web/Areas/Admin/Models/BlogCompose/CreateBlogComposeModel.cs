@@ -1,4 +1,5 @@
 ﻿using Blog.Framework.BlogCompose;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,6 +31,21 @@ namespace Blog.Web.Areas.Admin.Models.BlogCompose
 
         }
 
+        public IList<SelectListItem> GetCategoryList()
+        {
+            IList<SelectListItem> listItems = new List<SelectListItem>();
+
+            foreach (var item in _blogComposeService.GetCategory())
+            {
+                var ctg = new SelectListItem
+                {
+                    Text = item.Name,
+                    Value = item.Id.ToString()
+                };
+                listItems.Add(ctg);
+            }
+            return listItems;
+        }
         public void Create()
         {
             var blogCompose = new BlogComposes()

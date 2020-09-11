@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.Framework.Categories;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,5 +16,6 @@ namespace Blog.Framework.BlogCompose
         void EditCompose(BlogComposes blogComposes);
         BlogComposes GetCompose(int Id);
         BlogComposes DeleteCompose(int Id);
+        IList<Category> GetCategory();
     }
 }
