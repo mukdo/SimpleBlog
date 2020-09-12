@@ -16,7 +16,7 @@ namespace Blog.membership.Data
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
 
-        private readonly ApplicationUser _superAdminUser;
+        private readonly ApplicationUser _superAdminUser, _adminUser;
         private readonly Role _superAdminRole, _adminRole;
 
         public AccountSeed(UserManager userManager, RoleManager roleManager, ApplicationDbContext context)
@@ -26,6 +26,7 @@ namespace Blog.membership.Data
             _roleManager = roleManager;
 
             _superAdminUser = new ApplicationUser("superadmin", "Sabbir Islam Mukdo", "8801781831484", "bmukdo@gmail.com");
+            _adminUser = new ApplicationUser("admin", "Sabbir Islam Mukdo", "8801781831484", "mukdo@gmail.com");
            
 
             _superAdminRole = new Role("SuperAdmin");
@@ -54,6 +55,18 @@ namespace Blog.membership.Data
                     if (await CheckAndCreateRoleAsync(_superAdminRole))
                     {
                         await _userManager.AddToRoleAsync(_superAdminUser, _superAdminRole.Name);
+                    }
+                }
+            }
+
+            if ((await _userManager.FindByNameAsync(_adminUser.UserName.ToUpper())) == null)
+            {
+                result = await _userManager.CreateAsync(_adminUser, "Password@2020");
+                if (result.Succeeded)
+                {
+                    if (await CheckAndCreateRoleAsync(_adminRole))
+                    {
+                        await _userManager.AddToRoleAsync(_adminUser, _adminRole.Name);
                     }
                 }
             }

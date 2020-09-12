@@ -37,7 +37,7 @@ namespace Blog.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CreatePost([Bind (nameof(CreateBlogComposeModel.Title),
                                                nameof(CreateBlogComposeModel.Body),
-                                               nameof(CreateBlogComposeModel.ImageUrl),
+                                               nameof(CreateBlogComposeModel.ImageFile),
                                                nameof(CreateBlogComposeModel.CategoryId))] 
                                          CreateBlogComposeModel model)
         {
@@ -78,7 +78,7 @@ namespace Blog.Web.Areas.Admin.Controllers
                                                nameof(EditBlogComposeModel.Title),
                                                nameof(EditBlogComposeModel.Body),
                                                nameof(EditBlogComposeModel.DateTime),
-                                               nameof(EditBlogComposeModel.ImageUrl),
+                                               nameof(EditBlogComposeModel.ImageFile),
                                                nameof(EditBlogComposeModel.CategoryId))]
                                          EditBlogComposeModel model)
         {

@@ -50,7 +50,18 @@ namespace Blog.Web.Areas.Admin.Models
             MenuModel = new MenuModel
             {
                 MenuItems = new List<MenuItem>
-                {    
+                {
+                    new MenuItem
+                    {
+                        Title = "Register Admin",
+                        Childs = new List<MenuChildItem>
+                        {
+                            new MenuChildItem{ Title = "Create Admin", Url = "/Identities/Register/Registration" }
+
+                        }
+
+                    },
+
                     new MenuItem
                     {
                         Title = "Category",
