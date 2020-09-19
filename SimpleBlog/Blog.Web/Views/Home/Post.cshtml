@@ -1,30 +1,25 @@
-﻿
-    @foreach (var item in ViewBag.Post)
-    {
-
+﻿@model Blog.Web.Areas.Admin.Models.BlogCompose.EditBlogComposeModel
 <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
     <div class="post-image">
         <div>
-            <img src="~/images/@item.ImageUrl" class="img" alt="blog1">
+            <img src="~/images/@Model.ImageUrl" class="img" alt="blog1">
         </div>
         <div class="post-info flex-row">
             <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
-            <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;@item.Date.ToString("MM/dd/yyyy")</span>
+            <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;@Model.DateTime.ToString("MM/dd/yyyy")</span>
 
         </div>
     </div>
     <div class="post-title">
         <h2 class="card-title">
-            <a asp-controller="Home" asp-action="Post" asp-route-id="@item.Id">@item.Title </a>
         </h2>
     </div>
     <div class="post-content">
 
-        @Html.Raw(item.Body.Substring(0, 50));
+        @Html.Raw(Model.Body)
 
     </div>
     <br />
 </div>
-        <hr>
-    }
-
+<hr>
+<button class="btn button-primary" onclick="location.href='@Url.Action("Index","Home")'">Back</button>

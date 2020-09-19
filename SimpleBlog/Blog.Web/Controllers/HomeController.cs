@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Blog.Web.Models;
 using Blog.Framework;
+using Blog.Web.Areas.Admin.Models.BlogCompose;
+using Blog.Web.Areas.Admin.Models.Comments;
+using Blog.Web.Areas.Admin.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Web.Controllers
 {
@@ -28,7 +32,53 @@ namespace Blog.Web.Controllers
             ViewBag.Post = post;
             return View();
         }
+        public IActionResult Post(int id)
+        {
+            var model = new EditBlogComposeModel();
+            model.Load(id);
+            //_context.BlogComposes
+            //    .Include(p => p.Comments)
+            //    .FirstOrDefault(p => p.Id == id);
+            return View(model);
 
+        }
+
+        public IActionResult Comment()
+        {
+            var model = new AddCommentModel();
+            return View();
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Comment([Bind(nameof(AddCommentModel.Name),
+                                           nameof(AddCommentModel.Email),
+                                           nameof(AddCommentModel.Message),
+                                           nameof(AddCommentModel.IsAprove))] 
+                                      AddCommentModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    model.Add();
+                    model.Response = new ResponseModel("Comment Successful Wating for Review", ResponseType.Success);
+
+                    //logger code
+                    _logger.LogInformation("Comment Create Sucessfully");
+
+                    return RedirectToAction("Post");
+                }
+
+                catch (Exception ex)
+                {
+                    model.Response = new ResponseModel("Comment failued.", ResponseType.Failure);
+                    _logger.LogError($"Comment Add 'Failed'. Excption is : {ex.Message}");
+                }
+            }
+
+            return View(model);
+        }
         public IActionResult Privacy()
         {
             return View();

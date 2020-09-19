@@ -9,7 +9,7 @@ namespace Blog.Web.Areas.Admin.Models.BlogCompose
 {
     public class BlogComposeModel : BlogComposeBaseModel
     {
-        public BlogComposeModel(IBlogComposeService blogComposeService): base(blogComposeService)
+        public BlogComposeModel(IBlogComposeService  blogComposeService): base(blogComposeService)
         {
 
         }

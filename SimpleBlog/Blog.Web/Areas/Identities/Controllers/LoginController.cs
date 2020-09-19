@@ -22,17 +22,16 @@ namespace Blog.Web.Areas.Identities.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
-        //private readonly IEmailSender _emailSender;
-
+ 
         public LoginController( UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<LoginModel> logger/*,IEmailSender emailSender*/)
+            ILogger<LoginModel> logger)
         {
             
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            //_emailSender = emailSender;
+           
         }
         [BindProperty]
 

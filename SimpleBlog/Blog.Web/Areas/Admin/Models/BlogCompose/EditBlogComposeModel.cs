@@ -27,7 +27,7 @@ namespace Blog.Web.Areas.Admin.Models.BlogCompose
         public DateTime DateTime { get; set; }
         public int CategoryId { get; set; }
 
-        public EditBlogComposeModel(IBlogComposeService blogComposeService) : base(blogComposeService)
+        public EditBlogComposeModel(IBlogComposeService  blogComposeService) : base(blogComposeService)
         {
 
         }
