@@ -1,5 +1,6 @@
 ﻿using Blog.Framework.BlogCompose;
 using Blog.Framework.Categories;
+using Blog.Framework.Comments;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,7 @@ namespace Blog.Framework
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<BlogComposes> BlogComposes { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
        
     }

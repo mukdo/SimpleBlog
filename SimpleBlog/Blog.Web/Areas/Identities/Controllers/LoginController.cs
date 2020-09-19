@@ -61,7 +61,7 @@ namespace Blog.Web.Areas.Identities.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
                 }
                 
                 else

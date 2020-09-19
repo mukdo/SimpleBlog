@@ -1,4 +1,5 @@
 ﻿using Blog.Framework.Categories;
+using Blog.Framework.Comments;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,10 +51,13 @@ namespace Blog.Framework.BlogCompose
             return _blogUnitOfWork.CategoryRepository.GetAll();
         }
 
+        
+
         public BlogComposes GetCompose(int Id)
         {
             return _blogUnitOfWork.BlogRepository.GetById(Id);
         }
+              
 
         public (IList<BlogComposes> composes, int total, int totalDisplay) GetComposes(int pageindex, int Pagesize, string searchText, string sortText)
         {

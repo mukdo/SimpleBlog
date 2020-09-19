@@ -2,6 +2,7 @@
 using Blog.Data;
 using Blog.Framework.BlogCompose;
 using Blog.Framework.Categories;
+using Blog.Framework.Comments;
 using Blog.membership.Contexts;
 using Blog.membership.Data;
 using Blog.membership.Services;
@@ -42,10 +43,16 @@ namespace Blog.Framework
             builder.RegisterType<CategoryService>().As<ICategoryService>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<BlogComposeRepository>().As<IBlogComposeRepository>()
+            builder.RegisterType<BlogComposeRepository>().As<IBlogComposeRepository>();
+            //.InstancePerLifetimeScope();
+
+            builder.RegisterType<BlogComposeService>().As<IBlogComposeService>();
+                //.InstancePerLifetimeScope();
+
+            builder.RegisterType<CommentRepository>().As<ICommentRepository>()
                .InstancePerLifetimeScope();
 
-            builder.RegisterType<BlogComposeService>().As<IBlogComposeService>()
+            builder.RegisterType<CommentService>().As<ICommentService>()
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<AccountSeed>()
