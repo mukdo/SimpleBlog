@@ -8,6 +8,7 @@ using Blog.membership.Entities;
 using Blog.Web.Areas.Identities.Models;
 using Blog.Web.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
@@ -17,7 +18,7 @@ using Serilog;
 namespace Blog.Web.Areas.Identities.Controllers
 {
     [Area("Identities")]
-    
+    [Authorize(Roles = "SuperAdmin,Administrator")]
     public class RegisterController : Controller
     {
         

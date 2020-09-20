@@ -83,6 +83,18 @@ namespace Blog.Web.Areas.Admin.Models
 
                         }
 
+                    },
+
+                    new MenuItem
+                    {
+                        Title = "Setting",
+                        Childs = new List<MenuChildItem>
+                        {
+                            new MenuChildItem{ Title = "Manage Profile", Url = "/Identity/Account/Manage/Index" },
+                            new MenuChildItem{ Title = "Log Out", Url ="/Identity/Account/Logout"}
+
+                        }
+
                     }
                 }
             };
