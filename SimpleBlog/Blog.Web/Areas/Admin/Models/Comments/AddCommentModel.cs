@@ -29,8 +29,8 @@ namespace Blog.Web.Areas.Admin.Models.Comments
                 Name = this.Name,
                 Email = this.Email,
                 Message = this.Message,
-                IsAprove = this.IsAprove
-                // BlogComposes = this.BlogcomposeId.ToString()
+                IsAprove = this.IsAprove,
+                 BlogComposeId = this.BlogComposesId
             };
             _commentService.CreateComment(comment);
         }

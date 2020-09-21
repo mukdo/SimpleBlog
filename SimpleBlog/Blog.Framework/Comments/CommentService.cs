@@ -48,6 +48,8 @@ namespace Blog.Framework.Comments
             return _blogUnitOfWork.CommentRepository.GetById(Id);
         }
 
+        Comment obj = new Comment();
+       // public IList<Comment> Get(obj ,false , );
         public (IList<Comment> comments, int total, int totalDisplay) GetComments(int pageindex, int Pagesize, string searchText, string sortText)
         {
             var result = _blogUnitOfWork.CommentRepository.GetAll().ToList();

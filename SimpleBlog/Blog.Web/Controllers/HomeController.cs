@@ -51,7 +51,8 @@ namespace Blog.Web.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Comment([Bind(nameof(AddCommentModel.Name),
+        public IActionResult Comment([Bind(nameof(AddCommentModel.BlogComposesId),
+                                           nameof(AddCommentModel.Name),
                                            nameof(AddCommentModel.Email),
                                            nameof(AddCommentModel.Message),
                                            nameof(AddCommentModel.IsAprove))] 
@@ -67,7 +68,7 @@ namespace Blog.Web.Controllers
                     //logger code
                     _logger.LogInformation("Comment Create Sucessfully");
 
-                    return RedirectToAction("Post");
+                    return RedirectToAction("Post", new { id =model.BlogComposesId} );
                 }
 
                 catch (Exception ex)
@@ -77,7 +78,7 @@ namespace Blog.Web.Controllers
                 }
             }
 
-            return View(model);
+            return View();
         }
         public IActionResult Privacy()
         {

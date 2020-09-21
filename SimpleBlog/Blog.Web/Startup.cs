@@ -88,6 +88,9 @@ namespace Blog.Web
                 options.User.RequireUniqueEmail = false;
             });
 
+            services.ConfigureApplicationCookie(options => {
+                options.LoginPath = "/Identities/Login/Index";
+            });
 
             services.AddSession(options =>
             {

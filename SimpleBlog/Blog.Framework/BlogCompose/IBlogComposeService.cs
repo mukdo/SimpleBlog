@@ -16,6 +16,7 @@ namespace Blog.Framework.BlogCompose
         void CreateCompose(BlogComposes blogComposes);
         void EditCompose(BlogComposes blogComposes);
         BlogComposes GetCompose(int Id);
+        IList<Comment> GetComposeWithComment(int id);
         BlogComposes DeleteCompose(int Id);
         IList<Category> GetCategory();
     }

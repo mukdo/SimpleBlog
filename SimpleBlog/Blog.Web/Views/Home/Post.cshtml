@@ -22,4 +22,10 @@
     <br />
 </div>
 <hr>
-<button class="btn button-primary" onclick="location.href='@Url.Action("Index","Home")'">Back</button>
+<div class="comment">
+    @{ 
+        await Html.RenderPartialAsync("Comment", new Blog.Web.Areas.Admin.Models.Comments.AddCommentModel { BlogComposesId = Model.Id });
+    }
+</div>
+<br />
+<button class="btn btn-success"  onclick="location.href='@Url.Action("Index","Home")'"> Back </button>
