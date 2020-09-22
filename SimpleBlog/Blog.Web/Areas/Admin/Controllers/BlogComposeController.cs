@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Blog.Web.Areas.Admin.Models;
 using Blog.Web.Areas.Admin.Models.BlogCompose;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Logging;
 namespace Blog.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin,Administrator")]
     public class BlogComposeController : Controller
     {
         private readonly IConfiguration _configuration;

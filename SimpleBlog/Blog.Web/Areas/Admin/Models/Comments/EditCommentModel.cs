@@ -16,7 +16,9 @@ namespace Blog.Web.Areas.Admin.Models.Comments
         [EmailAddress]
         public string Email { get; set; }
         [Required]
+        [Display (Name ="Comment")]
         public string Message { get; set; }
+        [Display(Name = "Stutas")]
         public bool IsAprove { get; set; }
         
         public int BlogcomposeId { get; set; }
@@ -29,12 +31,14 @@ namespace Blog.Web.Areas.Admin.Models.Comments
             var comment = new Comment()
             {
                 Id = this.Id,
-                Name = this.Name,
-                Email = this.Email,
-                Message = this.Message,
-                IsAprove = this.IsAprove
-               // BlogComposes = this.BlogcomposeId.ToString()
-            };
+            Name = this.Name,
+            Email = this.Email,
+            Message = this.Message,
+            IsAprove = this.IsAprove,
+            BlogComposeId = this.BlogcomposeId
+           
+            // BlogComposes = this.BlogcomposeId.ToString()
+        };
             _commentService.EditComment(comment);
         }
 
@@ -49,7 +53,8 @@ namespace Blog.Web.Areas.Admin.Models.Comments
                 Email = comment.Email;
                 Message = comment.Message;
                 IsAprove = comment.IsAprove;
-                
+                BlogcomposeId = comment.BlogComposeId;
+
             }
         }
     }
