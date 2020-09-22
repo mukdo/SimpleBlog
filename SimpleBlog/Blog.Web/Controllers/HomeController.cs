@@ -36,9 +36,8 @@ namespace Blog.Web.Controllers
         {
             var model = new EditBlogComposeModel();
             model.Load(id);
-            //_context.BlogComposes
-            //    .Include(p => p.Comments)
-            //    .FirstOrDefault(p => p.Id == id);
+            var comment = _context.Comments.Where(c => c.BlogComposeId == id && c.IsAprove==true);
+            ViewBag.Comment = comment;
             return View(model);
 
         }

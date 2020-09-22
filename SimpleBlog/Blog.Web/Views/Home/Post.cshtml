@@ -22,6 +22,27 @@
     <br />
 </div>
 <hr>
+<div class="card">
+    <h4 class="text-secondary">All Comments</h4>
+    @foreach (var item in ViewBag.Comment)
+    {
+<div>
+
+    <p class="card-subtitle text-info">
+        Name:  @item.Name
+    </p>
+    <p class="card-subtitle text-info">
+        Email: @item.Email
+    </p>
+
+
+    <span> <b class="text-success">Comment:</b></span> <span> @item.Message </span>
+    <hr class="bg-secondary" />
+</div>
+   
+    }
+</div>
+<br />
 <div class="comment">
     @{ 
         await Html.RenderPartialAsync("Comment", new Blog.Web.Areas.Admin.Models.Comments.AddCommentModel { BlogComposesId = Model.Id });
