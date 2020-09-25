@@ -9,15 +9,15 @@ namespace Blog.Web.Areas.Admin.Models.BlogCompose
 {
     public class BlogComposeBaseModel : AdminBaseModel, IDisposable
     {
-        protected IBlogComposeService _blogComposeService;
-        public BlogComposeBaseModel( IBlogComposeService blogComposeService)
+        protected IBlogComposeService  _blogComposeService;
+        public BlogComposeBaseModel( IBlogComposeService  blogComposeService)
         {
             _blogComposeService = blogComposeService;
         }
 
         public BlogComposeBaseModel()
         {
-            _blogComposeService = Startup.AutofacContainer.Resolve<IBlogComposeService>();
+            _blogComposeService = Startup.AutofacContainer.Resolve<IBlogComposeService >();
         }
 
         public void Dispose()

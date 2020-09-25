@@ -1,4 +1,5 @@
 ﻿using Blog.Framework.BlogCompose;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Blog.Web.Areas.Admin.Models.BlogCompose
 {
     public class BlogComposeModel : BlogComposeBaseModel
     {
-        public BlogComposeModel(IBlogComposeService blogComposeService): base(blogComposeService)
+        public BlogComposeModel(IBlogComposeService  blogComposeService): base(blogComposeService)
         {
 
         }
@@ -42,6 +43,22 @@ namespace Blog.Web.Areas.Admin.Models.BlogCompose
                    ).ToArray()
 
             };
+        }
+
+        public IList<SelectListItem> GetCategoryList()
+        {
+            IList<SelectListItem> listItems = new List<SelectListItem>();
+
+            foreach (var item in _blogComposeService.GetCategory())
+            {
+                var ctg = new SelectListItem
+                {
+                    Text = item.Name,
+                    Value = item.Id.ToString()
+                };
+                listItems.Add(ctg);
+            }
+            return listItems;
         }
 
         internal string Delete(int Id)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Blog.Framework.Categories;
+using Blog.Framework.Comments;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,15 +46,28 @@ namespace Blog.Framework.BlogCompose
 
         }
 
+        public IList<Category> GetCategory()
+        {
+            return _blogUnitOfWork.CategoryRepository.GetAll();
+        }
+
+        
+
         public BlogComposes GetCompose(int Id)
         {
             return _blogUnitOfWork.BlogRepository.GetById(Id);
         }
-
+              
+       
         public (IList<BlogComposes> composes, int total, int totalDisplay) GetComposes(int pageindex, int Pagesize, string searchText, string sortText)
         {
             var result = _blogUnitOfWork.BlogRepository.GetAll().ToList();
             return (result, 0, 0);
+        }
+
+        public IList<Comment> GetComposeWithComment(int id)
+        {
+            return _blogUnitOfWork.CommentRepository.Get(x => x.BlogComposeId == id);
         }
     }
 }

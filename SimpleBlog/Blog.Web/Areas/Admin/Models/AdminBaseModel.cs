@@ -50,7 +50,18 @@ namespace Blog.Web.Areas.Admin.Models
             MenuModel = new MenuModel
             {
                 MenuItems = new List<MenuItem>
-                {    
+                {
+                    new MenuItem
+                    {
+                        Title = "Register Admin",
+                        Childs = new List<MenuChildItem>
+                        {
+                            new MenuChildItem{ Title = "Create Admin", Url = "/Identities/Register/Registration" }
+
+                        }
+
+                    },
+
                     new MenuItem
                     {
                         Title = "Category",
@@ -69,6 +80,18 @@ namespace Blog.Web.Areas.Admin.Models
                         {
                             new MenuChildItem{ Title = "View Post", Url = "/Admin/BlogCompose" },
                             new MenuChildItem{ Title = "Add Post", Url ="/Admin/BlogCompose/CreatePost"}
+
+                        }
+
+                    },
+
+                    new MenuItem
+                    {
+                        Title = "Setting",
+                        Childs = new List<MenuChildItem>
+                        {
+                            new MenuChildItem{ Title = "Manage Profile", Url = "/Identity/Account/Manage/Index" },
+                            new MenuChildItem{ Title = "Log Out", Url ="/Identity/Account/Logout"}
 
                         }
 

@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>New Category</h1>
+                    <h1>New Post</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">New Book</li>
+                        <li class="breadcrumb-item active">New Post</li>
                     </ol>
                 </div>
             </div>
@@ -26,12 +26,12 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Add a new Category</h3>
+                        <h3 class="card-title">Add a new Post</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <partial name="_ActionMessage" model="@Model.Response" />
-                        <form asp-area="Admin" asp-controller="BlogCompose" asp-action="CreatePost" method="post" class="form-horizontal">
+                        <form asp-area="Admin" asp-controller="BlogCompose" asp-action="CreatePost" method="post" class="form-horizontal" enctype="multipart/form-data">
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="form-group">
                                 <label asp-for="Title" class="col-md-2 control-label"></label>
@@ -50,18 +50,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label asp-for="ImageUrl" class="col-md-2 control-label"></label>
-                                <div class="col-md-10">
-                                    <input asp-for="ImageUrl" class="form-control" />
-                                </div>
+                                <label for="ImageName">Photo</label>
+                                <input type="file" class="form-control" asp-for="ImageFile" placeholder="image/*">
                             </div>
 
                             <div class="form-group">
-                                <label asp-for="CategoryId" class="col-md-2 control-label"></label>
-                                <div class="col-md-10">
-                                    <input asp-for="CategoryId" class="form-control" />
-                                    <span asp-validation-for="CategoryId" class="text-danger"></span>
-                                </div>
+                                <label for="Category">Category</label>
+                                <select asp-for="CategoryId" asp-items="@Model.GetCategoryList()" class="form-control">
+                                    <option>Please select one</option>
+                                </select>
                             </div>
 
                             <div class="form-group">

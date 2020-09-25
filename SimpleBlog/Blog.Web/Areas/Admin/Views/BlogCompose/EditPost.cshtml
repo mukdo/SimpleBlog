@@ -35,7 +35,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <partial name="_ActionMessage" model="@Model.Response" />
-                        <form asp-area="Admin" asp-controller="BlogCompose" asp-action="EditPost" method="post" class="form-horizontal">
+                        <form asp-area="Admin" asp-controller="BlogCompose" asp-action="EditPost" method="post" class="form-horizontal" enctype="multipart/form-data">
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <input type="hidden" asp-for="Id" />
                             <div class="form-group">
@@ -55,18 +55,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label asp-for="ImageUrl" class="col-md-2 control-label"></label>
-                                <div class="col-md-10">
-                                    <input asp-for="ImageUrl" class="form-control" />
-                                </div>
+                                <label for="ImageName">Photo</label>
+                                <input  class="form-control" asp-for="ImageFile" placeholder="image/*" type="file">
                             </div>
 
                             <div class="form-group">
-                                <label asp-for="CategoryId" class="col-md-2 control-label"></label>
-                                <div class="col-md-10">
-                                    <input asp-for="CategoryId" class="form-control" />
-                                    <span asp-validation-for="CategoryId" class="text-danger"></span>
-                                </div>
+                                <label for="Category">Category</label>
+                                <select asp-for="CategoryId" asp-items="@Model.GetCategoryList()" class="form-control">
+                                    <option>Please select one</option>
+                                </select>
                             </div>
 
                             <div class="form-group">

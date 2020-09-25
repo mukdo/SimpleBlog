@@ -66,10 +66,49 @@ namespace Blog.Web.Migrations.Framework
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Blog.Framework.Comments.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BlogComposeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BlogComposesId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAprove")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogComposesId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("Blog.Framework.Categories.Category", b =>
                 {
                     b.HasOne("Blog.Framework.BlogCompose.BlogComposes", "BlogComposes")
                         .WithMany("Category")
+                        .HasForeignKey("BlogComposesId");
+                });
+
+            modelBuilder.Entity("Blog.Framework.Comments.Comment", b =>
+                {
+                    b.HasOne("Blog.Framework.BlogCompose.BlogComposes", "BlogComposes")
+                        .WithMany("Comments")
                         .HasForeignKey("BlogComposesId");
                 });
 #pragma warning restore 612, 618

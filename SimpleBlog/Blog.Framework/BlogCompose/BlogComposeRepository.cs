@@ -7,7 +7,7 @@ namespace Blog.Framework.BlogCompose
 {
     public class BlogComposeRepository : Repository<BlogComposes, int, FrameworkContext>, IBlogComposeRepository
     {
-        public BlogComposeRepository( FrameworkContext frameworkContext): base(frameworkContext)
+        public BlogComposeRepository(FrameworkContext frameworkContext) : base(frameworkContext)
         {
 
         }

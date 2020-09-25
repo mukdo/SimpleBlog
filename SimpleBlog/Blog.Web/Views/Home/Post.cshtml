@@ -1,0 +1,52 @@
+﻿@model Blog.Web.Areas.Admin.Models.BlogCompose.EditBlogComposeModel
+<div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+    <div class="post-image">
+        <div>
+            <img src="~/images/@Model.ImageUrl" class="img" alt="blog1">
+        </div>
+        <div class="post-info flex-row">
+            <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
+            <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;@Model.DateTime.ToString("MM/dd/yyyy")</span>
+
+        </div>
+    </div>
+    <div class="post-title">
+        <h2 class="card-title">
+        </h2>
+    </div>
+    <div class="post-content">
+
+        @Html.Raw(Model.Body)
+
+    </div>
+    <br />
+</div>
+<hr>
+<div class="card">
+    <h4 class="text-secondary">All Comments</h4>
+    @foreach (var item in ViewBag.Comment)
+    {
+<div>
+
+    <p class="card-subtitle text-info">
+        Name:  @item.Name
+    </p>
+    <p class="card-subtitle text-info">
+        Email: @item.Email
+    </p>
+
+
+    <span> <b class="text-success">Comment:</b></span> <span> @item.Message </span>
+    <hr class="bg-secondary" />
+</div>
+   
+    }
+</div>
+<br />
+<div class="comment">
+    @{ 
+        await Html.RenderPartialAsync("Comment", new Blog.Web.Areas.Admin.Models.Comments.AddCommentModel { BlogComposesId = Model.Id });
+    }
+</div>
+<br />
+<button class="btn btn-success"  onclick="location.href='@Url.Action("Index","Home")'"> Back </button>

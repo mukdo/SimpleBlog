@@ -6,6 +6,7 @@ using Autofac;
 using Blog.Framework;
 using Blog.Web.Areas.Admin.Models;
 using Blog.Web.Areas.Admin.Models.Categories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.Logging;
 namespace Blog.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin,Administrator")]
     public class CategoryController : Controller
     {
         private readonly IConfiguration _configuration;

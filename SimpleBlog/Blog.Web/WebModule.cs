@@ -2,6 +2,7 @@
 using Blog.membership.Entities;
 using Blog.Web.Areas.Admin.Models.BlogCompose;
 using Blog.Web.Areas.Admin.Models.Categories;
+using Blog.Web.Areas.Admin.Models.Comments;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace Blog.Web
         {
             builder.RegisterType<CategoryModel>();
             builder.RegisterType<BlogComposeModel>();
+            builder.RegisterType<CommentModel>();
            
             base.Load(builder);
         }

@@ -1,5 +1,6 @@
 ﻿using Blog.Data;
 using Blog.Framework.Categories;
+using Blog.Framework.Comments;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,5 +17,6 @@ namespace Blog.Framework.BlogCompose
         public DateTime Date { get; set; } 
         public int CategoryId { get; set; }
         public ICollection<Category> Category { get; set; }
+        public IList<Comment> Comments { get; set; }
     }
 }
