@@ -18,6 +18,7 @@ using Blog.membership.Services;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Blog.Framework;
+using ReflectionIT.Mvc.Paging;
 
 namespace Blog.Web
 {
@@ -98,11 +99,12 @@ namespace Blog.Web
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-
+            //services.AddPaging();
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
             services.AddRazorPages();
             services.AddOptions();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

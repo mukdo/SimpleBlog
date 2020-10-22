@@ -1,4 +1,7 @@
-﻿
+﻿@*@model ReflectionIT.Mvc.Paging.IPagingList<Blog.Web.Migrations.Framework.BlogCompose>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *,ReflectionIT.Mvc.Paging*@
+
     @foreach (var item in ViewBag.Post)
     {
 
@@ -20,11 +23,15 @@
     </div>
     <div class="post-content">
 
-        @Html.Raw(item.Body.Substring(0, 50));
+        @Html.Raw(item.Body.Substring(0, 70));
 
     </div>
     <br />
 </div>
         <hr>
     }
+
+@*<nav aria-label="Paiging ">
+    @await this.Component.InvokeAsync("Pager",new { PagingList =this.Model})
+</nav>*@
 

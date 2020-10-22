@@ -61,7 +61,16 @@ namespace Blog.Web.Areas.Admin.Models
                         }
 
                     },
+                    new MenuItem
+                    {
+                        Title = "View Comment",
+                        Childs = new List<MenuChildItem>
+                        {
+                            new MenuChildItem{ Title = "Comment", Url = "/Admin/Comment" }
 
+                        }
+
+                    },
                     new MenuItem
                     {
                         Title = "Category",
