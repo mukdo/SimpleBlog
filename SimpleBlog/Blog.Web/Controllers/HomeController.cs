@@ -11,6 +11,7 @@ using Blog.Web.Areas.Admin.Models.BlogCompose;
 using Blog.Web.Areas.Admin.Models.Comments;
 using Blog.Web.Areas.Admin.Models;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 
 namespace Blog.Web.Controllers
 {
@@ -32,6 +33,13 @@ namespace Blog.Web.Controllers
             ViewBag.Post = post;
             return View();
         }
+        //public async Task<IActionResult> Index(int page = 1)
+        //{
+        //    var post = _context.BlogComposes.AsNoTracking().OrderByDescending(d => d.Date);
+        //    ViewBag.Post = post;
+        //    var model = await PagingList.CreateAsync(post, 5, page);
+        //    return View(model);
+        //}
         public IActionResult Post(int id)
         {
             var model = new EditBlogComposeModel();
